@@ -8,7 +8,7 @@ def _precommit(filepath):
     try:
         subprocess.check_output(['pre-commit', 'install'])
         subprocess.check_output(['pre-commit', 'run', '-a'])
-    except subprocess.CalledProcessError as e:
+    except (FileNotFoundError, subprocess.CalledProcessError) as e:
         return
 
 
